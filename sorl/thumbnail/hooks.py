@@ -2,6 +2,8 @@ import importlib
 
 from django.core.exceptions import ImproperlyConfigured
 
+from sorl.thumbnail.images import ImageFile
+
 
 def load_path_attr(path):
     i = path.rfind('.')
@@ -18,7 +20,8 @@ def load_path_attr(path):
 
 
 class ThumbnailDefaultHookset(object):
-    pass
+
+    IMAGE_FILE_CLASS = ImageFile
 
 
 class HookProxy(object):

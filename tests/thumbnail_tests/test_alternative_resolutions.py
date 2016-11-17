@@ -5,13 +5,15 @@ import pytest
 
 from sorl.thumbnail import get_thumbnail
 from sorl.thumbnail.conf import settings
-from sorl.thumbnail.images import ImageFile
+from sorl.thumbnail.hooks import hookset
 from sorl.thumbnail.engines.pil_engine import Engine as PILEngine
 
 from .utils import BaseStorageTestCase
 
 
 pytestmark = pytest.mark.django_db
+
+ImageFile = hookset.IMAGE_FILE_CLASS
 
 
 class AlternativeResolutionsTest(BaseStorageTestCase):

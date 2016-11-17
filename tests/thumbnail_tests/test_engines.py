@@ -13,7 +13,7 @@ from sorl.thumbnail import default
 from sorl.thumbnail.base import ThumbnailBackend
 from sorl.thumbnail.conf import settings
 from sorl.thumbnail.helpers import get_module_class
-from sorl.thumbnail.images import ImageFile
+from sorl.thumbnail.hooks import hookset
 from sorl.thumbnail.parsers import parse_geometry
 from sorl.thumbnail.templatetags.thumbnail import margin
 from sorl.thumbnail.engines.pil_engine import Engine as PILEngine
@@ -23,6 +23,8 @@ from .utils import BaseTestCase
 
 
 pytestmark = pytest.mark.django_db
+
+ImageFile = hookset.IMAGE_FILE_CLASS
 
 
 class SimpleTestCase(BaseTestCase):

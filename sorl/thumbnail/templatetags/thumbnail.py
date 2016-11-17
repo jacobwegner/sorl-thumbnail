@@ -15,10 +15,13 @@ from django.conf import settings
 
 from sorl.thumbnail.conf import settings as sorl_settings
 from sorl.thumbnail import default
-from sorl.thumbnail.images import ImageFile, DummyImageFile
+from sorl.thumbnail.hooks import hookset
+from sorl.thumbnail.images import DummyImageFile
 from sorl.thumbnail.parsers import parse_geometry
 from sorl.thumbnail.shortcuts import get_thumbnail
 
+
+ImageFile = hookset.IMAGE_FILE_CLASS
 
 register = Library()
 kw_pat = re.compile(r'^(?P<key>[\w]+)=(?P<value>.+)$')

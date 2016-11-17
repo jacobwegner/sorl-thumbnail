@@ -8,10 +8,13 @@ from django.utils.six import string_types
 
 from sorl.thumbnail.conf import settings, defaults as default_settings
 from sorl.thumbnail.helpers import tokey, serialize
-from sorl.thumbnail.images import ImageFile, DummyImageFile
+from sorl.thumbnail.hooks import hookset
+from sorl.thumbnail.images import DummyImageFile
 from sorl.thumbnail import default
 from sorl.thumbnail.parsers import parse_geometry
 
+
+ImageFile = hookset.IMAGE_FILE_CLASS
 
 logger = logging.getLogger(__name__)
 

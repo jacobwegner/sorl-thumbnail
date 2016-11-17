@@ -12,13 +12,15 @@ from django.test.signals import setting_changed
 from django.conf import UserSettingsHolder
 
 from sorl.thumbnail.conf import settings
+from sorl.thumbnail.hooks import hookset
 from sorl.thumbnail.helpers import get_module_class
-from sorl.thumbnail.images import ImageFile
 from sorl.thumbnail.log import ThumbnailLogHandler
 from .models import Item
 from .storage import MockLoggingHandler
 
 DATA_DIR = os.path.join(settings.MEDIA_ROOT, 'data')
+
+ImageFile = hookset.IMAGE_FILE_CLASS
 
 handler = ThumbnailLogHandler()
 handler.setLevel(logging.ERROR)
